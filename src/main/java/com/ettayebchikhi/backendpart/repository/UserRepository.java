@@ -1,25 +1,8 @@
 package com.ettayebchikhi.backendpart.repository;
 
-import com.ettayebchikhi.backendpart.models.User;
-import com.ettayebchikhi.backendpart.utils.CsvDataAccess;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
+import com.ettayebchikhi.backendpart.models.AppUser;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.List;
+public interface UserRepository extends JpaRepository<AppUser,Long> {
 
-@Service
-@RequiredArgsConstructor
-public class UserRepository {
-    private final CsvDataAccess csvDataAccess;
-    public List<User> getAllUsers(){
-        return csvDataAccess.getRecords();
-    }
-
-    public User addUser(User user) {
-        return csvDataAccess.addRecord(user);
-    }
-
-    public User addUser() {
-        return csvDataAccess.addRandomRecord();
-    }
 }
